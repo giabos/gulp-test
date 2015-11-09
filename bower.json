@@ -1,0 +1,18 @@
+{
+  "name": "gulp2",
+  "description": "",
+  "main": "gulpfile.js",
+  "authors": [
+    "giabos <gianni.boscarino@gmail.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
