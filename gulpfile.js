@@ -3,7 +3,7 @@ var gulp = require('gulp');
 var babel = require('gulp-babel');
 var uglify = require('gulp-uglify');
 var cssmin = require('gulp-minify-css');
-var bower = require('main-bower-files');
+var bower = require('gulp-main-bower-files');
 var less = require('gulp-less');
 var livereload = require('gulp-livereload');
 var include = require('gulp-include');
@@ -30,6 +30,14 @@ var dist = {
   js: publishdir + '/static/',
   vendor: publishdir + '/static/'
 }
+
+
+gulp.task('test-bower', function () {
+    return gulp.src('./bower.json')
+        .pipe(bower())
+        .pipe(concat('all.js'))
+        .pipe(gulp.dest('/dist'));
+});
 
 //
 // concat *.js to `vendor.js`
@@ -66,7 +74,7 @@ function buildCSS() {
 function buildJS() {
   return gulp.src(src.scripts)
     .pipe(include())
-    .pipe(babel())
+    .pipe(babel({ presets: ['es2015'] }))
     /*.pipe(browserify({
       insertGlobals: true,
       extensions: ['.es6'],
